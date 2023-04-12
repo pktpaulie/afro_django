@@ -15,7 +15,7 @@
                     {% if user.is_authenticated %}
                       <li class="navlink">{{ user.name }}</li>
                     {% else %}
-                      <li class="navlink"><a href="{% url 'register' %}">Register</a></li>
+                      <li class="navlink">Register</li>
                       <li class="navlink">Login</li>
                     {% endif %}
                     <li class="navlink">About</li>

@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
     <head>
-        <title></title>        
+        <title>{{ p_title }}</title>        
         <meta charset="UTF-8">
         <link rel="stylesheet" href="{% static 'css/dtl.css' %}">
         <script src=""></script>
@@ -15,7 +15,7 @@
                     {% if user.is_authenticated %}
                       <li class="navlink">{{ user.name }}</li>
                     {% else %}
-                      <li class="navlink"><a href="{% url 'register' %}">Register</a></li>
+                      <li class="navlink">Register</li>
                       <li class="navlink">Login</li>
                     {% endif %}
                     <li class="navlink">About</li>
@@ -24,26 +24,17 @@
                 </ul>
             </nav>
         </header>
-            {% if p_title %}
-            <h1>{{ username }} Welcome to {{ p_title }}</h1>
-            {% endif %}  
-            
-            {% if gender == 'Male' %}
-              <p>Greetings Sir</p>
-            {% else %}
-              <p>Greetings Madamemoiselle</p>
-            {% endif %}
+             <div class="regdiv">
+                <form action="" id="reg_form">
+                    <input placeholder="Username" name="username" type="text">
+                    <input placeholder="Email" name="email" type="email">
+                    <input placeholder="Password" required="password" type="password">
+                    <input placeholder="Confirm Password" name="confirm password" type="password">
+                    <input type="submit">
+                </form>
+             </div>
 
-            {% if username == 'Pauline' %}
-              <p>Hi Pauline</p>
-            {% elif username == 'Mariam' %}
-              <p>Hi Mariam</p>
-            {% else %}
-              <p>Wot now</p>
-            {% endif %}
         <footer>
-
-
         </footer>
     </body>
 

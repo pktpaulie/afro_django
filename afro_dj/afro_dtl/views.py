@@ -10,3 +10,6 @@ def index(request):
         {'p_title': p_title,
          'username': username,
          'gender': gender})
+
+def register(request):
+    return render(request, 'register.html')
