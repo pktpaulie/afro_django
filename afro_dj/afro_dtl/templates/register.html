@@ -24,29 +24,28 @@
                 </ul>
             </nav>
         </header>
-        <form action="{% url 'registration' %}" id="reg_form">    
+        <form action="{% url 'registration' %}" id="reg_form" method="POST" enctype="multipart/form-data">    
+            {% csrf_token %}
             <div class="regdiv">
                 <!-- all data captured in a from input fields can be accessed in views
                 using the name field here -->
-                <select name="gender">
+                <select name="gender" required>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
                 <br/>
-                <!-- <label for="username">Username</label> -->
-                
-                <input placeholder="Username" required name="username" type="text">
+                <!-- <label for="username">Username</label> -->            
+                <input placeholder="Username" name="username" type="text" required>
                 <br/>
                 <label for="email">Email</label>
                 <input placeholder="Email" name="email" type="email" required>
                 <br/>
                 <label for="password">Password</label>
-                <input placeholder="Password" required="password" type="password">
+                <input placeholder="Password" name="password" type="password" required>
                 <br/>
                 <label for="confirm password">Confirm Password</label>
                 <input placeholder="Confirm Password" required="confirm password" type="password">
-                <input type="submit" title="Sign Up" id="signupbtn">
-                
+                <input type="submit" title="Sign Up" id="signupbtn">               
             </div>
         </form>
         <footer>
