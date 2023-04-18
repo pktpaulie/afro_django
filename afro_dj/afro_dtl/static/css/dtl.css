@@ -1,10 +1,11 @@
 header{
-    background-color: blue;
+    background-color: rgb(64, 1, 57);
     color: white;
     min-height: 70px;
     padding-top: 30px;
     
 }
+
 
 .navlink{
     float: right;
@@ -48,13 +49,60 @@ header a{
 
 }
 
-#reg_form {
-    width: 80%;
+#reg_form #login_form {
+    width: 60%;
     padding: 15px;
+    margin-top: 5%;
+    padding-top: 35%;
+    padding-bottom: 5%;
 }
 
-#signupbtn{
+#page_content h1{
+    text-align: center;
+    
+}
+
+#signupbtn #loginbtn{
     width: 30%;
-    background-color: blue;
+    background-color: rgb(64, 1, 57);
     color: white;
+}
+
+footer {
+    display: flex;
+    text-align: center;
+    bottom: 0;
+    position: absolute;
+    /* position: relative; */
+    width: 100%;
+    background: rgb(64, 1, 57);
+    height: 50px;
+    padding: 2px;
+    justify-content: space-between;
+}
+
+#footer_text p{
+    text-align: center;
+    padding-left: 50%;
+    color: white;
+}
+
+#my_text {
+    color: yellow; 
+}
+#close_btn{
+    width: 10%;
+    color: antiquewhite;
+    background: white;
+    background-color: rgb(125, 3, 3);
+}
+
+
+#flash_message{
+    color: rgb(4, 161, 25);
+    background: rgb(233, 233, 249);
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+    padding-top: 1%;
 }

@@ -1,50 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
 
-<!DOCTYPE html>
-    <head>
-        <title></title>        
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="{% static 'css/dtl.css' %}">
-        <script src=""></script>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li id="logo">{{ p_title }}</li>
-                    {% if user.is_authenticated %}
-                      <li class="navlink">{{ user.name }}</li>
-                    {% else %}
-                      <li class="navlink"><a href="{% url 'register' %}">Register</a></li>
-                      <li class="navlink">Login</li>
-                    {% endif %}
-                    <li class="navlink">About</li>
-                    <li class="navlink">Home</li>
-                    
-                </ul>
-            </nav>
-        </header>
-            <!-- {% if p_title %} -->
-            <h1>{{ username }} Welcome to {{ p_title }}</h1>
-            <!-- {% endif %}   -->
-            
-            {% if gender == 'Male' %}
-              <p>Greetings Sir</p>
-            {% else %}
-              <p>Greetings Madamemoiselle</p>
-            {% endif %}
+{% if user.is_authenticated %}
+  <h1>Welcome to the {{ p_title }} Dashboard</h1>
+{% else %}
+  <h1>{{ author }} Welcome to the {{ p_title }} Landing Page</h1>
+{% endif %}
 
-            {% if username == 'Pauline' %}
-              <p>Hi Pauline</p>
-            {% elif username == 'Mariam' %}
-              <p>Hi Mariam</p>
-            {% else %}
-              <p>Wot now</p>
-            {% endif %}
-        <footer>
+{% if gender == 'Male' %}
+  <p>Greetings Sir</p>
+{% else %}
+  <p>Greetings Madamemoiselle</p>
+{% endif %}
+
+{% if author %}
+  <p>Thank you {{ author }} for writing this code</p>
+{% else %}
+  <p>{{ username }} in charge</p>
+{% endif %}
 
 
-        </footer>
-    </body>
+        
 
-</html>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<form action="{% url 'login_user' %}" id="login_form" method="POST" enctype="multipart/form-data">    
+    {% csrf_token %}
+    <div class="regdiv">
+        <!-- all data captured in a from input fields can be accessed in views
+        using the name field here -->
+        <br>     
+        <input placeholder="Username" name="username" type="text" required>
+        <br>
+        <input placeholder="Password" name="password" type="password" required>
+        <br>
+        <input type="submit" title="Sign In" id="siginpbtn">               
+    </div>
+</form>
+    <br>    
+{% endblock %}
