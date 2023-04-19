@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.decorators import login_required
 from .models import UserAccount
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 def index(request):
     p_title = 'Afro Django'
@@ -56,6 +57,7 @@ def login_user(request):
             #login the user
             auth_login(request, logged_user)
             print(user_name + ' ' + 'logged in successfully')
+            messages.success(request, 'You have logged in successfully. Welcome!')
             return redirect('index')
         else:
             # where authentication has failed/ user credentials do not exist
@@ -95,4 +97,5 @@ if request=='POST':
 @login_required
 def logout_user(request):
     auth_logout(request)
+    messages.error(request, 'You have logged out successfully. Goodbye!')
     return redirect('login_page')

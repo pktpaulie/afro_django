@@ -3,19 +3,21 @@
 {% load static %}
 
 {% if user.is_authenticated %}
-  <h1>Welcome to the {{ p_title }} Dashboard</h1>
+  <h2>Welcome to the {{ p_title }} Dashboard</h1>
+    {% if gender == 'Male' %}
+      <p>Greetings Sir</p>
+    {% else %}
+      <p>Greetings Madamemoiselle</p>
+    {% endif %}
 {% else %}
-  <h1>{{ author }} Welcome to the {{ p_title }} Landing Page</h1>
+  <h2>Welcome to the {{ p_title }} Landing Page</h1>
+  <p>Greetings </p>
 {% endif %}
 
-{% if gender == 'Male' %}
-  <p>Greetings Sir</p>
-{% else %}
-  <p>Greetings Madamemoiselle</p>
-{% endif %}
+
 
 {% if author %}
-  <p>Thank you {{ author }} for writing this code</p>
+  <p>{{ author }} authored this page</p>
 {% else %}
   <p>{{ username }} in charge</p>
 {% endif %}

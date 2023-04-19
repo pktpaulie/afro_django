@@ -3,18 +3,25 @@
 {% load static %}
 
 
-<form action="{% url 'login_user' %}" id="login_form" method="POST" enctype="multipart/form-data">    
-    {% csrf_token %}
-    <div class="regdiv">
-        <!-- all data captured in a from input fields can be accessed in views
-        using the name field here -->
-        <br>     
-        <input placeholder="Username" name="username" type="text" required>
-        <br>
-        <input placeholder="Password" name="password" type="password" required>
-        <br>
-        <input type="submit" title="Sign In" id="siginpbtn">               
-    </div>
-</form>
+<div id="content" class="d-flex justify-content-center">
+    <div class = "body container-fluid container login">
+        <div class="container container-fluid top">
+            <h1 class = "text-black text-center">LOGIN</h1>
+        </div>
+        <div class="content-section" >
+            <div class="container-fluid">
+                <form action="{% url 'login_user' %}" id="login_form" method="POST" enctype="multipart/form-data">    
+                    {% csrf_token %}
+                    <div class="regdiv">
+                        <!-- all data captured in a from input fields can be accessed in views
+                        using the name field here -->
+                        <br>     
+                        <input placeholder="Username" name="username" class="form-control" type="text" required>
+                        <br>
+                        <input placeholder="Password" name="password" class="form-control" type="password" required>
+                        <br>
+                        <input type="submit" title="Sign In" id="siginpbtn" class="btn btn-outline-success btn-lg">               
+                    </div>
+                </form>
     <br>    
 {% endblock %}

@@ -1,61 +1,62 @@
 {% load static %}
-
 <!DOCTYPE html>
     <head>
         <title></title>        
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="{% static 'css/dtl.css' %}">
-        <script src=""></script>
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        <link rel="stylesheet" href="{% static 'css/pk.css' %}">
+        <script src="{% static 'js/dtl.js' %}"></script> 
     </head>
     <body>
-        <header>
-            <nav>
-                <ul>
-                    <li id="logo">{{ p_title }}</li>
-                    {% if user.is_authenticated %}
-                    <li class="navlink"><a href="{% url 'logout_user' %}">Logout</a></li>
-                      <li class="navlink"><a href="{% url 'index' %}">About</a></li>
-                    <li class="navlink"><a href="{% url 'index' %}">Home</a></li>
-                    {% else %}
-                      <li class="navlink"><a href="{% url 'register' %}">Register</a></li>
-                      <li class="navlink"><a href="{% url 'login_page' %}">Login</a></li>
-                    {% endif %}
+        <div class="container-fluid"> 
+          <ul class="nav nav-expand-lg nav-info bg-info mr-auto">
+              <li id="logo" class="nav-item"><a href="{% url 'index' %}">{{ p_title }}</a></li>
+              {% if user.is_authenticated %}
+              <li class="nav-item"><a class="nav-link" href="{% url 'logout_user' %}"><button class="btn btn-primary btn-md">Logout</button> </a></li>
+                <li class="nav-item" ></li><a class="nav-link" href="{% url 'index' %}"><button class="btn btn-primary btn-md">About</button></a></li>
+              <li class="nav-item" ><a class="nav-link" href="{% url 'index' %}"><button class="btn btn-primary btn-md">Home</button></a></li>
+              {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}"><button class="btn btn-primary btn-md">Register</button></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login_page' %}"><button class="btn btn-primary btn-md">Login</button></a></li>
+              {% endif %}   
                     
-                    
-                </ul>
-            </nav>
-        </header>
-        <div id="page_content">
-          
-          
-          {% if user.is_authenticated %}
-            {% with messages='custom flash message' %}
+          </ul>
+            
+        </div>
+        <div id="page_content" class="container-fluid">
+        
+          <!-- Displaying flash messages for a logged in user -->          
               {% if messages %}
-                <div id="flash_message">
-                  <p class="messages">{{ messages }}</p>
-                  <button id="close_btn">Close</button>
+                <div id="flash_message" class="container-fluid">
+                  <ul class="messages">
+                    {% for message in messages %}
+                      <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                        <p class="messages">{{ message }}</p>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  
+                  <button id="btn btn-outline-danger" onclick="hide('flash_message')">Close</button>
                 </div>
               {% endif %}
-            {% endwith %}
-            <h1>{{ username }} logged into {{ p_title }} successfully</h1>
-          {% endif %}
 
-          
           {% block content %}
           <!-- This is where the content on the child page will be injected -->
           {% endblock %}
         </div>
-          
-
-
         
     </body>
-    <footer>
-      <!-- <div id="footer_text">
-        <p><b>Designed by Pauline &copy; </b></p>
-      </div> -->
-      <p id="footer_text" class="my_text" style="color: yellow;"><b>Designed by Pauline &copy; </b></p>
-
+    <footer class="page-footer font-small blue pt-4">
+      <div class="col-md-6 col-sm-6">
+        <div class="footer-copyright text-center py-3">
+          <!-- Designed by Pauline &copy;  -->
+          <p id="footer_text" class="my_text"><b>Designed by Pauline &copy; </b></p>
+        </div>
+        
+      </div>
+      
     </footer>
-
+    
 </html>

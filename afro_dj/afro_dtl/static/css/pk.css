@@ -1,0 +1,25 @@
+#nav-btn4 #nav-btn5{
+    float: right;
+}
+
+#nav-btn1{
+
+}
+
+.nav-link{
+    
+}
+
+#flash_message{
+    
+    text-align: center;
+    width: 60%;
+    margin: 1% 20%;
+    padding-top: 5px;
+    text-decoration: none;
+}
+
+#flash_message li{
+    display: inline;
+    
+}

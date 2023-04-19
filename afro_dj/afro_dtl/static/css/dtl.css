@@ -7,17 +7,27 @@ header{
 }
 
 
+form {
+    width: 40%;
+    margin: 0 auto;
+    /* background-color: whitesmoke; */
+}
+
 .navlink{
     float: right;
     margin-right: 20px;
     
+}
 
+.nav-link li a{
+    color: yellow;
 }
 
 header li{
     display: inline;
     padding: 0px 20px;
     font-size: 24px;
+    
 
 }
 header a{
@@ -58,8 +68,11 @@ header a{
 }
 
 #page_content h1{
-    text-align: center;
-    
+    text-align: center; 
+}
+
+#page_content h2{
+    text-align: center; 
 }
 
 #signupbtn #loginbtn{
@@ -75,7 +88,7 @@ footer {
     position: absolute;
     /* position: relative; */
     width: 100%;
-    background: rgb(64, 1, 57);
+    background: rgb(249, 159, 238);
     height: 50px;
     padding: 2px;
     justify-content: space-between;
@@ -88,7 +101,7 @@ footer {
 }
 
 #my_text {
-    color: yellow; 
+    color: rgb(12, 12, 0); 
 }
 #close_btn{
     width: 10%;
@@ -99,10 +112,11 @@ footer {
 
 
 #flash_message{
-    color: rgb(4, 161, 25);
+    color: green;
     background: rgb(233, 233, 249);
     text-align: center;
     width: 60%;
     margin-left: 20%;
     padding-top: 1%;
+    padding-bottom: 1%;
 }
