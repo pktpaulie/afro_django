@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
-from .models import UserAccount
+from .models import CustomMessage, UserAccount
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -93,9 +93,47 @@ if request=='POST':
     else:
         pass
 '''
-
 @login_required
 def logout_user(request):
     auth_logout(request)
     messages.error(request, 'You have logged out successfully. Goodbye!')
     return redirect('login_page')
+
+
+'''
+Using Django Templating Language, design a custom form that 
+captures user data or input, posts the data to a view which then 
+redirects the user to a new 
+template displaying the data as django templating variables.
+'''
+def user_msg(request):
+    #contact_form = MessageForm(data=request.POST)
+    if request.method == 'POST':
+        #if form.is_valid():
+        #contact_form = MessageForm(data=request.POST)
+        my_email = request.POST.get('my_email')
+        #my_email = request.POST['m_email']
+        title = request.POST.get('title')
+        #title = request.POST['title']
+        my_msg = request.POST.get('my_msg')
+        msg_details = CustomMessage(my_email=my_email, title=title, my_msg=my_msg)
+        msg_details.save()
+        print(my_email + ' ' + 'message sent')
+        messages.success(request, 'Message sent successfully')
+        #return redirect('msg_disp')
+        return render(request, 'msg_disp.html')
+    else:
+        return render(request, 'contact_us.html')
+
+def msg_disp(request):
+    #msg = get_object_or_404(Message, pk=pk)
+    
+    msgs = CustomMessage.objects.all
+    print('Messages')
+    context = {
+        'title': "Your Messages",
+        'msgs': msgs,
+        # 'msg_save': msg_save,
+        # 'my_title': my_title,
+    }
+    return render(request, 'msg_disp.html', {'msgs': msgs})

@@ -10,3 +10,10 @@ class UserAccount(models.Model):
     password = models.CharField(max_length=22)
     signup_time = models.DateTimeField(auto_now=True)
 
+class CustomMessage(models.Model):
+    my_email = models.CharField(max_length=255, blank=True, null=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    my_msg = models.TextField(blank=True, null=True)
+    
+    def __str__(self) -> str:
+        return self.my_email

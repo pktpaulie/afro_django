@@ -14,9 +14,10 @@
           <ul class="nav nav-expand-lg nav-info bg-info mr-auto">
               <li id="logo" class="nav-item"><a href="{% url 'index' %}">{{ p_title }}</a></li>
               {% if user.is_authenticated %}
-              <li class="nav-item"><a class="nav-link" href="{% url 'logout_user' %}"><button class="btn btn-primary btn-md">Logout</button> </a></li>
+                <li class="nav-item" ><a class="nav-link" href="{% url 'index' %}"><button class="btn btn-primary btn-md">Home</button></a></li>
                 <li class="nav-item" ></li><a class="nav-link" href="{% url 'index' %}"><button class="btn btn-primary btn-md">About</button></a></li>
-              <li class="nav-item" ><a class="nav-link" href="{% url 'index' %}"><button class="btn btn-primary btn-md">Home</button></a></li>
+                <li class="nav-item" ></li><a class="nav-link" href="{% url 'user_msg' %}"><button class="btn btn-primary btn-md">Contact Us</button></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout_user' %}"><button class="btn btn-primary btn-md">Logout</button> </a></li>
               {% else %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'register' %}"><button class="btn btn-primary btn-md">Register</button></a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'login_page' %}"><button class="btn btn-primary btn-md">Login</button></a></li>

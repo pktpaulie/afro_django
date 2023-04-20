@@ -23,3 +23,12 @@
     display: inline;
     
 }
+
+#msg_form{
+    width: 75%;
+    text-align: left;
+    padding-top: 4%;
+    padding-bottom: 10%;
+    border-radius: 30px;
+
+}

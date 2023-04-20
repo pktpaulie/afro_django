@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container container-fluid top">
+    <h2 class = "text-black text-center">YOUR MESSAGE</h2>
+</div>
+<div class="row justify-content-center">
+  {% for msg in msgs %}
+  <div class="card m-4" style="width: 18rem;">
+    
+    <div class="card-body">           
+      {{ msg.my_email }}  
+    </div>
+  </div>
+  <div class="card m-4" style="width: 18rem;">
+    <div class="card-body">           
+      {{ msg.title }}
+    </div>
+  </div>
+  <div class="card m-4" style="width: 18rem;">
+    <div class="card-body">           
+        {{ msg.my_msg }}
+    </div>
+  </div>
+  <div class="card m-4" style="width: 18rem;">
+    <div class="card-body">           
+      <a href="{% url 'index' %}"><input
+        type="submit"
+        value="Back Home"
+        class="btn btn-outline-info btn"
+        type="button"
+      /></a>
+    </div>
+  </div>
+  {% endfor %}   
+</div>
+
+{% endblock %}
