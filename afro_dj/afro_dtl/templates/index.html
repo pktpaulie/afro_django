@@ -16,13 +16,19 @@
 
 
 
+
 {% if author %}
   <p>{{ author }} authored this page</p>
 {% else %}
   <p>{{ username }} in charge</p>
 {% endif %}
 
-
-        
+<form action="{% url 'capture_message' %}" method="POST" class="form-control" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="text" class="col-md-10 form-control" placeholder="messenger's name" name="messenger">
+  <br>
+  <textarea name="message" id="" class="col-md-10" cols="40" rows="10"></textarea>
+  <button type="submit" class="btn btn-outline-primary">Send Message</button>
+</form>
 
 {% endblock %}

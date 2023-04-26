@@ -7,32 +7,44 @@
 </div>
 <div class="row justify-content-center">
   {% for msg in msgs %}
-  <div class="card m-4" style="width: 18rem;">
-    
-    <div class="card-body">           
-      {{ msg.my_email }}  
+  <div class="col-lg-3 col-md-3 col-xs-3">
+    <div class="card m-4">
+      
+      <div class="card-body">           
+        {{ msg.my_email }}  
+      </div>
     </div>
   </div>
-  <div class="card m-4" style="width: 18rem;">
-    <div class="card-body">           
-      {{ msg.title }}
+  <div class="col-lg-3 col-md-3 col-xs-3">
+    <div class="card m-4">
+      <div class="card-body">           
+        {{ msg.title }}
+      </div>
     </div>
   </div>
-  <div class="card m-4" style="width: 18rem;">
-    <div class="card-body">           
-        {{ msg.my_msg }}
+  <div class="col-lg-3 col-md-3 col-xs-3">
+    <div class="card m-4" >
+      <div class="card-body">           
+          {{ msg.my_msg }}
+      </div>
     </div>
+
   </div>
-  <div class="card m-4" style="width: 18rem;">
-    <div class="card-body">           
-      <a href="{% url 'index' %}"><input
-        type="submit"
-        value="Back Home"
-        class="btn btn-outline-info btn"
-        type="button"
-      /></a>
+  <div class="col-lg-3 col-md-3 col-xs-3">
+    <div class="card m-4" style="width: 18rem;">
+      <div class="card-body">           
+        <a href="{% url 'index' %}"><input
+          type="submit"
+          value="Back Home"
+          class="btn btn-outline-info btn"
+          type="button"
+        /></a>
+      </div>
     </div>
+
   </div>
+  
+  
   {% endfor %}   
 </div>
 

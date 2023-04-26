@@ -17,3 +17,10 @@ class CustomMessage(models.Model):
     
     def __str__(self) -> str:
         return self.my_email
+    
+class ChatBox(models.Model):
+    messenger = models.CharField(max_length=50, blank=True)
+    message = models.TextField(max_length=255, blank=True)
+
+    def __str__(self) -> str:
+        return self.messenger

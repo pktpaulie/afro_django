@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
-from .models import CustomMessage, UserAccount
+from .models import CustomMessage, UserAccount, ChatBox
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -106,34 +106,79 @@ captures user data or input, posts the data to a view which then
 redirects the user to a new 
 template displaying the data as django templating variables.
 '''
-def user_msg(request):
-    #contact_form = MessageForm(data=request.POST)
+""" def contact_us(request):
     if request.method == 'POST':
-        #if form.is_valid():
-        #contact_form = MessageForm(data=request.POST)
-        my_email = request.POST.get('my_email')
-        #my_email = request.POST['m_email']
-        title = request.POST.get('title')
-        #title = request.POST['title']
-        my_msg = request.POST.get('my_msg')
+        #my_email = request.POST.get('my_email')
+        my_email = request.POST['my_email']
+        #title = request.POST.get('title')
+        title = request.POST['title']
+        my_msg = request.POST['my_msg']
+        #my_msg = request.POST.get('my_msg')
         msg_details = CustomMessage(my_email=my_email, title=title, my_msg=my_msg)
         msg_details.save()
         print(my_email + ' ' + 'message sent')
         messages.success(request, 'Message sent successfully')
-        #return redirect('msg_disp')
-        return render(request, 'msg_disp.html')
+        msgs = CustomMessage.objects.all
+        print('Messages')
+        context = {
+            'msgs': msgs,
+        }
+        return render(request, 'msg_disp.html', context=context)
+        #return render(request, 'msg_disp.html')
     else:
-        return render(request, 'contact_us.html')
+        return render(request, 'contact_us.html') """
 
-def msg_disp(request):
-    #msg = get_object_or_404(Message, pk=pk)
+
+""" def msg_disp(request):
     
     msgs = CustomMessage.objects.all
     print('Messages')
     context = {
-        'title': "Your Messages",
         'msgs': msgs,
-        # 'msg_save': msg_save,
-        # 'my_title': my_title,
     }
-    return render(request, 'msg_disp.html', {'msgs': msgs})
+    #return render(request, 'msg_disp.html', {'msgs': msgs})
+    return render(request, 'msg_disp.html', context=context) """
+
+def contact_us(request):
+    if request.method == 'POST':
+        #my_email = request.POST.get('my_email')
+        my_email = request.POST['my_email']
+        #title = request.POST.get('title')
+        title = request.POST['title']
+        my_msg = request.POST['my_msg']
+        #my_msg = request.POST.get('my_msg')
+        msg_details = CustomMessage(my_email=my_email, title=title, my_msg=my_msg)
+        msg_details.save()
+        print(my_email + ' ' + 'message sent')
+        messages.success(request, 'Message sent successfully')
+        return render(request, 'msg_disp.html')
+    else:
+        messages.error(request, 'Message not sent')
+        return render(request, 'contact_us.html') 
+    
+def msg_disp(request, msg_details):
+    
+    msgs = CustomMessage.objects.all
+    print('Messages')
+    context = {
+        # 'msgs': msgs,
+        'msg_details': msg_details,
+    }
+    
+    return render(request, 'msg_disp.html', context=context)
+""" def msg_disp(request, pk):
+    msgs = get_object_or_404(CustomMessage, pk=pk)
+    context = {
+        'msgs': msgs,
+    }
+    return render(request, 'msg_disp.html', context=context) """
+
+def capture_message(request):
+    messenger_field = request.POST['messenger']
+    message_field = request.POST['message']
+    captured_msg = ChatBox(messenger=messenger_field, message=message_field)
+    # save what has been captured to our database
+    captured_msg.save()
+    chats = ChatBox.objects.all()
+    return render(request, 'chatbox.html', {'chats':chats})
+
